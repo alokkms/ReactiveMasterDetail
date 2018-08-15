@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ReactiveUI" Version="8.6.1" />
+    <PackageReference Include="ReactiveUI.XamForms" Version="8.6.1" />
+    <PackageReference Include="Xamarin.Forms" Version="3.0.0.561731" />  
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ThingOne\ThingOnePage.xaml.cs">
+      <DependentUpon>ThingOnePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="ThingTwo\ThingTwoPage.xaml.cs">
+      <DependentUpon>ThingTwoPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Master\MasterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ThingOne\ThingOnePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ThingTwo\ThingTwoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

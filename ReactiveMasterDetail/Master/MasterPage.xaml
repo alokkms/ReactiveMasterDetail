@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<reactiveui:ReactiveMasterDetailPage x:TypeArguments="local:MasterViewModel" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:reactiveui="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI.XamForms"
+             xmlns:local="clr-namespace:ReactiveMasterDetail;assembly=ReactiveMasterDetail"
+             x:Class="ReactiveMasterDetail.MasterPage">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Master">
+            <StackLayout Orientation="Vertical">
+                <ListView x:Name="listView">
+                    <ListView.ItemsSource>
+                        <x:Array Type="{x:Type local:MasterPageItem}">
+                            <local:MasterPageItem Title="ThingOne" IconSource="contacts.png" TargetType="{x:Type local:ThingOnePage}" />
+                            <local:MasterPageItem Title="ThingTwo" IconSource="todo.png" TargetType="{x:Type local:ThingTwoPage}" />
+                        </x:Array>
+                    </ListView.ItemsSource>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="5,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding IconSource}" />
+                                    <Label Grid.Column="1" Text="{Binding Title}" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <local:ThingOnePage />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+</reactiveui:ReactiveMasterDetailPage>
