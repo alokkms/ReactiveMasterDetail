@@ -10,8 +10,8 @@
                 <ListView x:Name="listView">
                     <ListView.ItemsSource>
                         <x:Array Type="{x:Type local:MasterPageItem}">
-                            <local:MasterPageItem Title="ThingOne" IconSource="contacts.png" TargetType="{x:Type local:ThingOnePage}" />
-                            <local:MasterPageItem Title="ThingTwo" IconSource="todo.png" TargetType="{x:Type local:ThingTwoPage}" />
+                            <local:MasterPageItem Title="ThingOne" IconSource="contacts.png" TargetType="{x:Type local:ThingOneViewModel}" />
+                            <local:MasterPageItem Title="ThingTwo" IconSource="todo.png" TargetType="{x:Type local:ThingTwoViewModel}" />
                         </x:Array>
                     </ListView.ItemsSource>
                     <ListView.ItemTemplate>
@@ -28,6 +28,9 @@
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
+                    <ListView.Behaviors>
+                        <local:ItemTappedBehavior Command="{Binding ItemTappedCommand}" />
+                    </ListView.Behaviors>
                 </ListView>
             </StackLayout>
         </ContentPage>

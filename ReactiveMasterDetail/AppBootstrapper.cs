@@ -15,6 +15,7 @@ namespace ReactiveMasterDetail
             Router = new RoutingState();
             RegisterScreen();
             RegisterViews();
+            RegisterViewModels();
             this.Router.NavigateAndReset.Execute(new MasterViewModel()).Subscribe();
         }
 
@@ -23,6 +24,12 @@ namespace ReactiveMasterDetail
         private void RegisterScreen()
         {
             Locator.CurrentMutable.RegisterConstant(this, typeof(IScreen));
+        }
+
+        private void RegisterViewModels()
+        {
+            Locator.CurrentMutable.Register(() => new ThingOneViewModel());
+            Locator.CurrentMutable.Register(() => new ThingTwoViewModel());
         }
 
         private void RegisterViews()

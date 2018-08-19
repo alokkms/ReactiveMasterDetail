@@ -2,15 +2,30 @@
 using System.Reactive;
 using System.Reactive.Linq;
 using ReactiveUI;
+using Splat;
 using Xamarin.Forms;
 
 namespace ReactiveMasterDetail
 {
+    public static class SignalExtension
+    {
+        public static IObservable<Unit> ToSignal<T>(this IObservable<T> @this)
+        {
+            if (@this == null)
+
+            {
+                throw new ArgumentNullException(nameof(@this));
+            }
+
+            return @this
+
+                .Select(_ => Unit.Default);
+        }
+    }
+
     public class MasterViewModel : BaseViewModel
     {
-        private IObservable<EventPattern<SelectedItemChangedEventArgs>> _selectedItemdChanged;
-
-        public ReactiveCommand<Unit, Unit> ItemSelectedCommand { get; set; }
+        public ReactiveCommand<MasterPageItem, Unit> ItemTappedCommand { get; set; }
 
         public EventHandler<SelectedItemChangedEventArgs> SelectedItem { get; set; }
 
@@ -20,20 +35,21 @@ namespace ReactiveMasterDetail
             SetupReactiveObservables();
         }
 
-        private void ExecuteItemSelectedCommand()
+        private static IRoutableViewModel GetViewModel(MasterPageItem item)
         {
-            HostScreen.Router.Navigate.Execute(new ThingOneViewModel());
+            return (IRoutableViewModel)Locator.Current.GetService(item.TargetType);
         }
+
+        private IObservable<Unit> ExecuteItemSelectedCommand(MasterPageItem item) => HostScreen.Router.Navigate.Execute(GetViewModel(item)).ToSignal();
 
         private void SetupReactiveObservables()
         {
-            ItemSelectedCommand = ReactiveCommand.Create(ExecuteItemSelectedCommand);
+            ItemTappedCommand =
+                ReactiveCommand.CreateFromObservable<MasterPageItem, Unit>(ExecuteItemSelectedCommand);
         }
 
         private void SetupReactiveSubscription()
         {
-            _selectedItemdChanged = Observable.FromEventPattern<SelectedItemChangedEventArgs>(x => SelectedItem += x, x => SelectedItem -= x);
-            _selectedItemdChanged.Select(x => x.EventArgs).Subscribe(@event => { });
         }
     }
 }
