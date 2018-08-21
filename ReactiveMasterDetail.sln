@@ -7,11 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{6FCB8D73-6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "targets", "targets", "{C569D976-569F-4F2F-BE7C-874EF0977A44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveMasterDetail.Android", "ReactiveMasterDetail.Android\ReactiveMasterDetail.Android.csproj", "{4B1CD5E3-C424-402B-994F-BB520EAFF0FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveMasterDetail.Android", "src\ReactiveMasterDetail.Android\ReactiveMasterDetail.Android.csproj", "{4B1CD5E3-C424-402B-994F-BB520EAFF0FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveMasterDetail.iOS", "ReactiveMasterDetail.iOS\ReactiveMasterDetail.iOS.csproj", "{9F84B3B1-6708-4F1A-B7CF-39BE40631C78}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveMasterDetail.iOS", "src\ReactiveMasterDetail.iOS\ReactiveMasterDetail.iOS.csproj", "{9F84B3B1-6708-4F1A-B7CF-39BE40631C78}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactiveMasterDetail", "ReactiveMasterDetail\ReactiveMasterDetail.csproj", "{B7F80378-358E-4554-A538-2839B6891F29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactiveMasterDetail", "src\ReactiveMasterDetail\ReactiveMasterDetail.csproj", "{B7F80378-358E-4554-A538-2839B6891F29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
