@@ -16,10 +16,10 @@ namespace ReactiveMasterDetail
             RegisterScreen();
             RegisterViews();
             RegisterViewModels();
-            this.Router.NavigateAndReset.Execute(new MasterViewModel()).Subscribe();
+            this.Router.NavigateAndReset.Execute(Locator.Current.GetService<ThingOneViewModel>()).Subscribe();
         }
 
-        public Page CreateMainPage() => new RoutedViewHost();
+        public Page CreateMainPage() => new MasterPage(new MasterViewModel());
 
         private void RegisterScreen()
         {
@@ -34,7 +34,6 @@ namespace ReactiveMasterDetail
 
         private void RegisterViews()
         {
-            Locator.CurrentMutable.Register(() => new MasterPage(), typeof(IViewFor<MasterViewModel>));
             Locator.CurrentMutable.Register(() => new ThingOnePage(), typeof(IViewFor<ThingOneViewModel>));
             Locator.CurrentMutable.Register(() => new ThingTwoPage(), typeof(IViewFor<ThingTwoViewModel>));
         }

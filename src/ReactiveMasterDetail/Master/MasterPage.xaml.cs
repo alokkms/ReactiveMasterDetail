@@ -11,9 +11,10 @@ namespace ReactiveMasterDetail
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MasterPage : ReactiveMasterDetailPage<MasterViewModel>
     {
-        public MasterPage()
+        public MasterPage(MasterViewModel viewModel)
         {
             InitializeComponent();
+            ViewModel = viewModel;
         }
     }
 }

@@ -36,10 +36,7 @@
         </ContentPage>
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
-        <NavigationPage>
-            <x:Arguments>
-                <local:ThingOnePage />
-            </x:Arguments>
-        </NavigationPage>
+        <reactiveui:RoutedViewHost>
+        </reactiveui:RoutedViewHost>
     </MasterDetailPage.Detail>
 </reactiveui:ReactiveMasterDetailPage>

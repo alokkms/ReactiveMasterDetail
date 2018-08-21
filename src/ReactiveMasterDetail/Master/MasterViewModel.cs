@@ -40,7 +40,8 @@ namespace ReactiveMasterDetail
             return (IRoutableViewModel)Locator.Current.GetService(item.TargetType);
         }
 
-        private IObservable<Unit> ExecuteItemSelectedCommand(MasterPageItem item) => HostScreen.Router.Navigate.Execute(GetViewModel(item)).ToSignal();
+        private IObservable<Unit> ExecuteItemSelectedCommand(MasterPageItem item) 
+            => HostScreen.Router.NavigateAndReset.Execute(GetViewModel(item)).ToSignal();
 
         private void SetupReactiveObservables()
         {
